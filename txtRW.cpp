@@ -75,8 +75,8 @@ string txtRW_readline(string FileName,int Line)
 
 int main()
 {
-    cout << txtRW_readline("in_out.txt",5);
-    txtRW_writeline("in_out.txt",5,"HEY IT'S WORKED!! Line 5");
-    cout << txtRW_readline("in_out.txt",5);
+    cout << txtRW_readline("in_out.txt",3);
+    txtRW_writeline("in_out.txt",3,"HEY IT'S WORKED!! Line 4");
+    cout << txtRW_readline("in_out.txt",3);
     return 0;
 }
