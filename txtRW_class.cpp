@@ -1,9 +1,9 @@
-#include<iostream>
-
 #include<fstream>
 #include<string>
 #include<cstdlib>
+
 using namespace std;
+
 class txtRW
 {
   public:
@@ -12,6 +12,20 @@ class txtRW
   int linecount(string FileName);
   string readline(string FileName,int Line);
 };
+
+int txtRW::linecount(string FileName)
+{
+    ifstream fin;
+    fin.open(FileName.c_str());
+    string txtline;
+    int length = 0;
+    while(getline(fin,txtline))
+    {
+        length++;
+    }
+    fin.close();
+    return length;
+}
 
 void txtRW::overwrite(string FileName)
 {
@@ -22,10 +36,19 @@ void txtRW::overwrite(string FileName)
     fout.open(FileName.c_str());
 
     string txtline;
+    int lineCount = 0;
     while(getline(fin,txtline))
     {
-        fout << txtline;
-        fout << endl;
+        if(lineCount < txtRW::linecount(("temp_"+FileName))-1)
+        {
+            fout << txtline << endl;
+        }
+        else
+        {
+            fout << txtline;
+        }
+        
+        lineCount++;
     }
     fin.close();
     fout.close();
@@ -54,42 +77,19 @@ void txtRW::writeline(string FileName, int Line,string Data)
 
     txtRW::overwrite(FileName);
 }
-int txtRW::linecount(string FileName)
-{
-    ifstream fin;
-    fin.open(FileName.c_str());
-    string txtline;
-    int count = 0;
-    while(getline(fin,txtline))
-    {
-        count++;
-    }
-    fin.close();
-    return count;
-}
+
 
 string txtRW::readline(string FileName,int Line)
 {
     ifstream fin;
     fin.open(FileName.c_str());
+
     string txtline;
-    // int i = 0;
-    // do
-    // {
-    //     getline(fin,txtline);
-    //     i++;
-    // } while (i < Line);
-    
-    for(int i = 0; i < Line ; i++)
+
+    for(int i = 0; i <= Line ; i++)
     {
         getline(fin,txtline);
     }
     fin.close();
     return txtline;
-}
-int main()
-{
-    txtRW txtRW;
-    cout << txtRW.readline("input.txt",4);
-    return 0;
 }
