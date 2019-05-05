@@ -9,6 +9,7 @@ class txtRW
   public:
   void overwrite(string FileName);
   void writeline(string FileName, int Line, string Data);
+  void appendline(string FileName, int Line, string Data);
   int linecount(string FileName);
   string readline(string FileName, int Line);
 };
@@ -65,12 +66,23 @@ void txtRW::writeline(string FileName, int Line, string Data)
 
     string txtline;
     int count = 0;
+    bool isEmpty = true;
+
     while(getline(fin,txtline))
     {
+        isEmpty = false;
         if(count == (Line)){fout << Data;}
         else{fout << txtline;}
         fout << endl;
-        count ++;
+        count++;
+    }
+    if(count < Line || isEmpty) //Check if targeted line is higher than existing line or the targeted file is empty
+    {
+        for(int i = count ; i < Line ; i++)
+        {
+            fout << endl;
+        }
+        fout << Data;
     }
     fin.close();
     fout.close();
@@ -78,8 +90,7 @@ void txtRW::writeline(string FileName, int Line, string Data)
     txtRW::overwrite(FileName);
 }
 
-
-string txtRW::readline(string FileName,int Line)
+string txtRW::readline(string FileName, int Line)
 {
     ifstream fin;
     fin.open(FileName.c_str());
@@ -90,7 +101,12 @@ string txtRW::readline(string FileName,int Line)
     {
         getline(fin,txtline);
     }
-    
+
     fin.close();
     return txtline;
+}
+
+void txtRW::appendline(string FileName, int Line, string Data)
+{
+    writeline(FileName, Line, readline(FileName,Line) + Data);
 }
