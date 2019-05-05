@@ -8,6 +8,8 @@
 * `writeline(string FileName, int Line, string Data)` is for writing a line of string to a file on a specific line location.
 * `appendline(string FileName, int Line, string Data)` is for appending string to existing line in a file on a specific line location.
 * `linecount(string FileName)` returns number of lines of a file.
+* `overwrite(string FileName)` overwrite target file with temp file.
+    * Ex. If your file name is "test.txt". This function will read data from "temp_test.txt" and replace it in "test.txt". Then delete "temp_test.txt" leaving only "test.txt" left. 
 
 * `parse2File(string FileName, vector<type> Input)` Parse data from vector to file.
     * only supported double, int, float, bool, string and char.
