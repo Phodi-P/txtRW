@@ -1,8 +1,5 @@
 #include<iostream>
-#include<fstream>
-#include<string>
 #include"txtRW_class.hpp"
-using namespace std;
 
 int main()
 {
@@ -14,6 +11,6 @@ int main()
     txtRW.writeline("input.txt",0,"Something");
     txtRW.writeline("input.txt",3,"Something1");
     txtRW.writeline("input.txt",100,"Something1");
-    cout << txtRW.readline("input.txt",0);
+    std::cout << txtRW.readline("input.txt",0);
     return 0;
 }
