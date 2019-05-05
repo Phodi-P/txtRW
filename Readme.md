@@ -9,7 +9,7 @@
 * `appendline(string FileName, int Line, string Data)` is for appending string to existing line in a file on a specific line location.
 * `linecount(string FileName)` returns number of lines of a file.
 
-* `parse2File(string FileName, vector<type>)` Parse data from vector to file.
+* `parse2File(string FileName, vector<type> Input)` Parse data from vector to file.
     * only supported double, int, float, bool, string and char.
 
 * `parse2Vector[Corresponding Type](string FileName)` Parse data from file to vector.
