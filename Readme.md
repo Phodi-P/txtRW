@@ -1,4 +1,5 @@
 # txtRW
+
 ## About
 * txtRW is a class for text file reading and writing;
 
@@ -12,4 +13,4 @@
 * The line number argument starts with 0;
 
 ## Coming soon
-*saving and loading array to and from text file.
+* saving and loading array to and from text file.
