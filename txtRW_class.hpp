@@ -28,7 +28,6 @@ class txtRW
   std::vector<std::string> parse2VectorS(std::string FileName);
   std::vector<char> parse2VectorC(std::string FileName);
 
-  private:
   void overwrite(std::string FileName);
 
 };
