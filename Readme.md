@@ -10,7 +10,7 @@
 * txtRW.linecount(string FileName) returns number of lines of a file.
 
 ## Notes
-* The line number argument starts with 0;
+* The line number argument starts from 0;
 
 ## Coming soon
 * saving and loading array to and from text file.
