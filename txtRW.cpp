@@ -1,7 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-#include"txtRW_class.cpp"
+#include"txtRW_class.hpp"
 using namespace std;
 
 int main()
