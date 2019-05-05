@@ -8,11 +8,13 @@
 class txtRW
 {
   public:
-  void overwrite(std::string FileName);
   void writeline(std::string FileName, int Line, std::string Data);
   void appendline(std::string FileName, int Line, std::string Data);
   int linecount(std::string FileName);
   std::string readline(std::string FileName, int Line);
+  
+  private:
+  void overwrite(std::string FileName);
 };
 
 int txtRW::linecount(std::string FileName)
