@@ -1,24 +1,25 @@
+#pragma once
+
 #include<fstream>
 #include<string>
 #include<cstdlib>
 
-using namespace std;
 
 class txtRW
 {
   public:
-  void overwrite(string FileName);
-  void writeline(string FileName, int Line, string Data);
-  void appendline(string FileName, int Line, string Data);
-  int linecount(string FileName);
-  string readline(string FileName, int Line);
+  void overwrite(std::string FileName);
+  void writeline(std::string FileName, int Line, std::string Data);
+  void appendline(std::string FileName, int Line, std::string Data);
+  int linecount(std::string FileName);
+  std::string readline(std::string FileName, int Line);
 };
 
-int txtRW::linecount(string FileName)
+int txtRW::linecount(std::string FileName)
 {
-    ifstream fin;
+    std::ifstream fin;
     fin.open(FileName.c_str());
-    string txtline;
+    std::string txtline;
     int length = 0;
     while(getline(fin,txtline))
     {
@@ -28,21 +29,21 @@ int txtRW::linecount(string FileName)
     return length;
 }
 
-void txtRW::overwrite(string FileName)
+void txtRW::overwrite(std::string FileName)
 {
-    ifstream fin;
+    std::ifstream fin;
     fin.open(("temp_"+FileName).c_str());
 
-    ofstream fout;
+    std::ofstream fout;
     fout.open(FileName.c_str());
 
-    string txtline;
+    std::string txtline;
     int lineCount = 0;
     while(getline(fin,txtline))
     {
         if(lineCount < txtRW::linecount(("temp_"+FileName))-1)
         {
-            fout << txtline << endl;
+            fout << txtline << std::endl;
         }
         else
         {
@@ -56,15 +57,15 @@ void txtRW::overwrite(string FileName)
     remove(("temp_"+FileName).c_str());
 }
 
-void txtRW::writeline(string FileName, int Line, string Data)
+void txtRW::writeline(std::string FileName, int Line, std::string Data)
 {
-    ofstream fout;
+    std::ofstream fout;
     fout.open(("temp_"+FileName).c_str());
 
-    ifstream fin;
+    std::ifstream fin;
     fin.open(FileName.c_str());
 
-    string txtline;
+    std::string txtline;
     int count = 0;
     bool isEmpty = true;
 
@@ -73,14 +74,14 @@ void txtRW::writeline(string FileName, int Line, string Data)
         isEmpty = false;
         if(count == (Line)){fout << Data;}
         else{fout << txtline;}
-        fout << endl;
+        fout << std::endl;
         count++;
     }
     if(count < Line || isEmpty) //Check if targeted line is higher than existing line or the targeted file is empty
     {
         for(int i = count ; i < Line ; i++)
         {
-            fout << endl;
+            fout << std::endl;
         }
         fout << Data;
     }
@@ -90,12 +91,12 @@ void txtRW::writeline(string FileName, int Line, string Data)
     txtRW::overwrite(FileName);
 }
 
-string txtRW::readline(string FileName, int Line)
+std::string txtRW::readline(std::string FileName, int Line)
 {
-    ifstream fin;
+    std::ifstream fin;
     fin.open(FileName.c_str());
 
-    string txtline;
+    std::string txtline;
 
     for(int i = 0; i <= Line ; i++)
     {
@@ -106,7 +107,7 @@ string txtRW::readline(string FileName, int Line)
     return txtline;
 }
 
-void txtRW::appendline(string FileName, int Line, string Data)
+void txtRW::appendline(std::string FileName, int Line, std::string Data)
 {
     writeline(FileName, Line, readline(FileName,Line) + Data);
 }
