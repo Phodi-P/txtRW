@@ -1,7 +1,7 @@
 # txtRW
 
 ## About
-* txtRW is a class for text file reading and writing;
+* txtRW is a C++ class for text file reading and writing.
 
 ## Usage
 * `txtRW.readline(string FileName, int Line)` returns a line of string from a file on a specific line location.
